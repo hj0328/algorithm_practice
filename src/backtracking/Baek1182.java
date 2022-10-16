@@ -17,7 +17,9 @@ import java.util.StringTokenizer;
  *  다양한 테스트해보기
  *  ex) 4 0 
  *      2 -2 2 -2 의 경우 인덱스 1에서 원하는 부분 수열을 찾았지만 
- *      인덱스 4에서 기존에 찾은 부분수열을 포함하는 경우를 생각할 수 있다.     
+ *      인덱스 4에서 기존에 찾은 부분수열을 포함하는 경우를 생각할 수 있다.
+ *
+ *  그런데 테케를 만들었다가 만든 테케의 답을 잘못한 생각이랑 달라서 왜 이럴까 생각이 들었다ㅋ
  */
 public class Baek1182 {
 
@@ -37,23 +39,25 @@ public class Baek1182 {
 			seq[i] = Integer.parseInt(st.nextToken());
 		}
 		
-		backTracking(0, 0, false);
+		backTracking(0, 0);
+		if(sum == 0) {
+			answer--;
+		}
 		System.out.println(answer);
 	}
 	
 	static int answer = 0;
-	static void backTracking(int idx, int seqSum, boolean lastSelected) {
+	static void backTracking(int idx, int seqSum) {
 		
-		if(seqSum == sum && lastSelected) {
-			answer++;
-		}
-
 		if(idx == count) {
+			if(seqSum == sum ) {
+				answer++;
+			}
 			return;
 		}
 		
-		backTracking(idx+1, seqSum + seq[idx], true);
-		backTracking(idx+1, seqSum, false);
+		backTracking(idx+1, seqSum + seq[idx]);
+		backTracking(idx+1, seqSum);
 	}
 
 }
