@@ -3,7 +3,6 @@ package backtracking;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
-import java.util.Iterator;
 import java.util.StringTokenizer;
 
 // N과 M(1) 백트래킹 기본 문제
