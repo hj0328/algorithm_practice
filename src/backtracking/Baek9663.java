@@ -6,6 +6,8 @@ import java.io.InputStreamReader;
 
 /*
  * backtracking 대표적인 문제: N-Queen문
+ *  대각선 \와 대각선 / 에 있는 퀸을 백트래킹 노드에 추가하여 루프를 제거
+ *  백준 채점에서 이렇게 약간의 수학적 처리로 속도가 1/5이나 줄어들었음  
  */
 public class Baek9663 {
 
@@ -14,18 +16,27 @@ public class Baek9663 {
 
 		N = Integer.parseInt(br.readLine());
 		board = new int[N][N];
-		columns = new boolean[N];
+
+		// 컬럼에 존재 유무 확인
+		isUpExist = new boolean[N];
+
+		// / 방향 존재 유무 확인
+		isUpRightExist = new boolean[1 << N];
+
+		// \ 방향 존재 유무 확인
+		isUpLeftExist = new boolean[1 << N];
 
 		backtracking(0);
 		System.out.println(ans);
 	}
 
-	static boolean[] columns;
+	static boolean[] isUpExist;
+	static boolean[] isUpLeftExist;
+	static boolean[] isUpRightExist;
+
 	static int[][] board;
 	static int N;
 	static int ans;
-	// 왼쪽 대각선, 오른쪽 대각선, 위쪽 검사
-	static int[][] dir = { { -1, -1 }, { -1, 0 }, { -1, 1 } };
 
 	/*
 	 * 위에서부터 백트래킹 시작 각 행에는 퀸은 하나씩만 놓는다.
@@ -39,43 +50,20 @@ public class Baek9663 {
 
 		// r행에서 각 c에 대해
 		for (int c = 0; c < N; c++) {
-			if (columns[c]) {
+
+			// 세 방향에 대해 다른 퀸 검사
+			if (isUpExist[c] || isUpLeftExist[r - c + N - 1] || isUpRightExist[r + c]) {
 				continue;
 			}
 
-			// 세 방향에 대해 다른 퀸 검사
-			boolean isOther = false;
-			for (int d = 0; d < 3; d++) {
-
-				// 다른 퀸이 하나라도 있으면 놓을 수 없음
-				if (checkOtherQuene(r, c, d)) {
-					isOther = true;
-					break;
-				}
-			}
-
-			if (!isOther) {
-				columns[c] = true;
-				board[r][c] = 1;
-				backtracking(r + 1);
-				board[r][c] = 0;
-				columns[c] = false;
-			}
+			isUpExist[c] = true;
+			isUpLeftExist[r - c + N - 1] = true;
+			isUpRightExist[r + c] = true;
+			backtracking(r + 1);
+			isUpExist[c] = false;
+			isUpLeftExist[r - c + N - 1] = false;
+			isUpRightExist[r + c] = false;
 		}
 	}
 
-	static boolean checkOtherQuene(int r, int c, int d) {
-		int nr = r;
-		int nc = c;
-
-		while (nr >= 0 && nc >= 0 && nc < N) {
-			if (board[nr][nc] == 1) {
-				return true;
-			}
-			nr += dir[d][0];
-			nc += dir[d][1];
-		}
-
-		return false;
-	}
 }
