@@ -91,7 +91,7 @@ public class Baek1799 {
 		int x = idx % N;
 		while (board[y][x] == 0 || colorMap[y][x] != color) {
 			idx++;
-			if(idx == MAX) {
+			if (idx == MAX) {
 				backtracking(idx, color);
 				return;
 			}
