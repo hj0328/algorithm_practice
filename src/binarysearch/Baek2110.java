@@ -25,9 +25,7 @@ public class Baek2110 {
         }
 
         Arrays.sort(list);
-
         binarySearch(N, C, list, maxHouse);
-
     }
 
     /*
@@ -46,15 +44,13 @@ public class Baek2110 {
                 e = mid;
             } else {
                 /*
-                    putCount < C
+                    putCount >= C
                     범위가 길어서 C개 필요없음
                     범위 줄이기
                  */
                 // 동일하면? 범위를 늘리는 방향으로
                 s = mid + 1;
             }
-//            System.out.println("mid " + mid + ", putCount " + putCount);
-
         }
 
         System.out.println(s-1);

@@ -8,7 +8,7 @@ import java.util.HashMap;
     가장 많이 받은 선물
     https://school.programmers.co.kr/learn/courses/30/lessons/258712
  */
-public class ProgrammersLevel1258712 {
+public class Programmers1258712 {
     public static void main(String[] args) {
         String[] friends = {"muzi", "ryan", "frodo", "neo"};
         String[] gifts = {"muzi frodo", "muzi frodo", "ryan muzi", "ryan muzi", "ryan muzi", "frodo muzi", "frodo ryan", "neo muzi"};
