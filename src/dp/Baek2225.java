@@ -15,7 +15,6 @@ public class Baek2225 {
 
         int[][] dp = new int[N + 1][K + 1];
         for (int i = 0; i <= N; i++) {
-            //dp[i][0] = 1;
             dp[i][1] = 1;
         }
 

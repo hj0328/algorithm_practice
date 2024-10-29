@@ -40,14 +40,6 @@ public class Baek2616 {
             }
         }
 
-//        for (int i = 0; i <= N; i++) {
-//            for (int t = 0; t <= 3; t++) {
-//                System.out.print(dp[i][t] + " ");
-//            }
-//            System.out.println();
-//        }
-
-
         System.out.println(dp[N][3]);
     }
 }

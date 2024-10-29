@@ -20,9 +20,7 @@ public class Baek21758 {
         int[] sum = new int[N + 1];
         for (int i = 1; i <= N; i++) {
             sum[i] = arr[i] + sum[i - 1];
-//            System.out.print(sum[i] + " ");
         }
-//        System.out.println();
 
         int max = 0;
         for(int i = 2; i < N ; i++) {
