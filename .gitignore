@@ -5,6 +5,8 @@ Main.java
 .classpath
 .project
 
+algorithm_practice.iml
+
 ### Eclipse ###
 .metadata
 bin/
