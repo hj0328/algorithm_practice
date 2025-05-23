@@ -46,7 +46,7 @@ public class Baek1525 {
             }
         }
 
-
+        // 현재 퍼즐 상태 저장
         String str = new String(chars);
         HashMap<String, Integer> countMap = new HashMap<>();
         countMap.put(str, 0);
